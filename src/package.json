@@ -1,21 +1,14 @@
 {
-  "name": "nodemailer-test",
+  "name": "sms_test",
   "version": "1.0.0",
-  "description": "testing nodemailer",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Vig",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "nodemailer": "^5.1.1"
+    "twilio": "^3.28.1"
   }
 }
