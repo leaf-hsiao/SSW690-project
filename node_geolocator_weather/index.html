@@ -1,0 +1,53 @@
+<body class="container">
+  
+    <!-- Weather Chip -->
+    <div class="chip">
+      <!-- Temperature Row -->
+      <div class="row">
+        <div class="col-5" id="weather-icon"></div>
+        <div class="col-7">
+          <div class="row"> 
+            <div class="col-8">
+              <h1 class="display-3" id="temp"></h1>
+            </div>
+            <!-- Change Temperature Unit -->
+            <div class="col-2">
+              <button id="btnCelsius" onclick="getCelsius()" disabled>°C</button>
+            </div>
+            <div class="col-2">
+              <button id="btnFahrenheit" onclick="getFahrenheit()">°F</button>
+            </div>
+            <!-- end Change Temperature Unit -->
+          </div>
+          <div class="row">
+              <h6 id="description"></h6>
+          </div>
+        </div>
+      </div> <!-- end Temperature Row -->
+      
+      <!-- Date, Time and Place Row -->
+      <div class="row">
+        <div class="col text-center">
+          <h3 id="place"></h3>
+          <h3 id="dateTime"></h3>
+        </div>
+      </div> <!-- end Date, Time and Place Row -->
+      
+      <!-- Other Weather Details Row -->
+      <div id="otherDetails" class="row">
+        <div class="col text-center">
+          <i class='wi wi-humidity' style='font-size: 3em'></i>
+          <h4 id="humidity"></h4>
+        </div>
+        <div class="col text-center">
+          <i class='wi wi-strong-wind' style='font-size: 3em'></i>
+          <h4 id="windSpeed"></h4>
+        </div>
+        <div class="col text-center">
+          <i class='wi wi-thermometer' style='font-size: 3em'></i>
+          <h4 id="celsius"></h4>
+        </div>
+      </div> <!-- end Other Weather Details Row -->
+    </div> <!-- end Weather Chip -->
+   
+  </body>
