@@ -14,23 +14,31 @@ router.get('/', function(req, res, next) {
   res.render('index', {'body':'', forecast: ''});
 });
 
-router.post('/weather', function(req, res, next){
-  let city = req.body.city;
-  url = url+city+"&"+appId;
+// router.post('/weather', function(req, res, next){
+//   let city = req.body.city;
+//   url = url+city+"&"+appId;
 
-  request(url, function (error, response, body) {
-      console.log('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      body = JSON.parse(body);
-      console.log( body);
-      if(error && response.statusCode != 200){
-        throw error;
-      }
+//   request(url, function (error, response, body) {
+//       console.log('error:', error); // Print the error if one occurred
+//       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//       body = JSON.parse(body);
+//       console.log( body);
+//       if(error && response.statusCode != 200){
+//         throw error;
+//       }
 
-    let country = (body.sys.country) ? body.sys.country : '' ;
-    let forecast = "For city "+city+', country '+country;
+//     let country = (body.sys.country) ? body.sys.country : '' ;
+//     let forecast = "For city "+city+', country '+country;
 
-    res.render('index', {body : body, forecast: forecast});
+//     res.render('index', {body : body, forecast: forecast});
+//   });
+// });
+
+/* GET ical info. */
+router.get('/ical', function (req, res) {
+  ical.fromURL('https://sit.instructure.com/feeds/calendars/user_TvB3EwF9kzFKDoNOVqAr9z8kJU8F1tIRvPFK9iqW.ics', {}, function(err, data) {
+    if (err) console.log(err);
+    res.json(data);
   });
 });
 
