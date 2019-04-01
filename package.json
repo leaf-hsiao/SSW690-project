@@ -1,18 +1,34 @@
 {
-  "name": "mywang",
-  "version": "1.0.0",
-  "description": "test",
-  "main": "link.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "node-login",
+  "version": "1.7.0",
+  "description": "A template for quickly building login systems on top of Node.js & MongoDb",
+  "author": "Stephen Braitsch <stephen@braitsch.io>",
+  "website": {
+    "url": "https://nodejs-login.herokuapp.com"
   },
-  "author": "",
-  "license": "ISC",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:braitsch/node-login.git"
+  },
   "dependencies": {
-    "ejs": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "emailjs": "^2.2.0",
     "express": "^4.16.4",
-    "express-validator": "^5.3.1",
-    "mongojs": "^2.6.0",
-    "validator": "^10.11.0"
+    "express-session": "^1.15.6",
+    "moment": "^2.22.2",
+    "mongodb": "^3.1.10",
+    "pug": "^2.0.3",
+    "puretext": "^0.1.5",
+    "stylus": "^0.54.5",
+    "textmagic-rest-client": "^1.0.10"
+  },
+  "engines": {
+    "node": "10.4.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
