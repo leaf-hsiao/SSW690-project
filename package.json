@@ -1,18 +1,17 @@
 {
-  "name": "mywang",
-  "version": "1.0.0",
-  "description": "test",
-  "main": "link.js",
+  "name": "690",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "express-validator": "^5.3.1",
-    "mongojs": "^2.6.0",
-    "validator": "^10.11.0"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "pug": "^2.0.3"
   }
 }
