@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 var indexRouter = require('./routes/index');
+var ical = require('./routes/ical');
 
 //Init App
 const app = express();
@@ -11,7 +12,10 @@ app.set('view engine', 'pug');
 
 // Routes
 app.use('/', indexRouter);
+app.use('/ical', ical);
 
+//Static files
+app.use(express.static('public'));
 
 // Start Server
 const PORT = process.env.PORT || 3000;

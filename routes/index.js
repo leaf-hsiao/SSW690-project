@@ -1,10 +1,7 @@
 const express = require('express');
 var router = express.Router();
-var today_date = require('../public/js/today_date');
-
 
 /* Weather module */
-//var today_weather = require('../public/js/today_weather');
 var weather = require('openweather-apis');
 
 const lang = 'en';
@@ -34,6 +31,24 @@ weather.getAllWeather((err, JSONObj) => {
     const cityName = json.name;
     today_weather = `${cityName} ${temp}${unitSymbol} ${des}`;
 });
+
+// Sherry's Time function
+var today = new Date();
+//day
+var dd = String(today.getDate());
+//month
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+var mm = monthNames[today.getMonth()];
+//year
+var yyyy = today.getFullYear();
+//weekday
+const weekdayNamed = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+var wd = weekdayNamed[today.getDay()];
+
+//all together format
+const today_date = wd + ', ' + mm + ' ' + dd;
 
 router.get('/', (req, res) => res.render('index', {
     today_date: today_date,
