@@ -1,5 +1,57 @@
-html
-  head
-    title= title
-  body
-    h1= message
+extends layout
+
+block content
+  // HEADER
+  header
+    nav#main-nav
+      div
+        ul
+          li
+            a(href='index.html') Home
+          li
+            a(href='DailyReminder.html') Daily Reminder
+          li
+            h1 DuckMommy
+          li
+            a(href='HomeworkAide.html') Homework Aide
+          li
+            a(href='MyAccount.html') My Account
+  // WELCOME
+  section#welcome
+    div
+      h1 Hi Yuan!
+  // TIME & WEATHER
+  section
+    #day
+      #time.day-sec
+        h2= today_date
+      #weather.day-sec
+        h2= today_weather
+  // COURSES & ASSIGNMENTS
+  section
+    #main-func
+      // COURSES
+      #courses
+        h3 Courses Today
+        #courses-list
+          ul
+            li SSW 690 | 12:00-14:30 |A 115
+            li SSW 565 | 18:15-20:45 |BC 310
+      // ASSIGNMENTS
+      #assignments
+        h3 Upcoming Due
+        ul
+          li
+            span 18:00
+            |  SSW 565 | Weekly
+            |                             Assignment: Apache Styles - G1
+          li
+            span 23:59
+            |  SSW 567 | Quiz 04
+          li
+            span 23:59
+            |  CPE 593 | Optional: find
+            |                             optimal k for Knuth
+
+    
+    
