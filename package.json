@@ -23,6 +23,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "geolocator": "^2.1.5",
+    "google-geolocation": "^1.0.2",
     "node-ical": "^0.9.2",
     "openweather-apis": "^4.0.0",
     "pug": "^2.0.3"

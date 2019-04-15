@@ -2,7 +2,7 @@ const express = require('express');
 var router = express.Router();
 
 //get ip demo, but what it got is the backend location!
-/*
+
 const geolocation = require('google-geolocation')({
     key: 'AIzaSyDGidP1hMaNNrRc8FYemvvJTUsotM_3b9k'
 });
@@ -22,7 +22,7 @@ geolocation(params, (err, data) => {
     }
     console.log(data);
 });
-*/
+
 
 /* Weather module */
 var weather = require('openweather-apis');
