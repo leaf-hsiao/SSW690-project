@@ -1,0 +1,7 @@
+extends layout
+block content
+  h1 #{welcome}
+  form(method='POST', action='')
+    label URL: 
+    input(name='canvasURL', type="url")
+    input(type='submit', value='Submit')

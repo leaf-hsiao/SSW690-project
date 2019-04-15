@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 var indexRouter = require('./routes/index');
+var settingsRouter = require('./routes/settings');
+var homeworkRouter = require('./routes/homework');
 var ical = require('./routes/ical');
 
 //Init App
@@ -12,7 +14,10 @@ app.set('view engine', 'pug');
 
 // Routes
 app.use('/', indexRouter);
+app.use('/settings', settingsRouter);
+app.use('/homework', homeworkRouter);
 app.use('/ical', ical);
+
 
 //Static files
 app.use(express.static('public'));

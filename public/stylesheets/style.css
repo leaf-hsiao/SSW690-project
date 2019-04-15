@@ -22,6 +22,7 @@ body {
     background-size: cover;
     margin: 30px 50px;
     line-height: 1.4;
+    font-size: 1em;
 }
 
 .wrapper {
@@ -120,6 +121,17 @@ body {
 
 #main-func li:nth-child(odd) {
     background: var(--light-primary);
+}
+
+table {
+    display: block;
+    margin: 2px;
+    padding: 1em;
+    font-size: 1em;
+}
+
+label {
+    font: 1.5em;
 }
 
 #main-footer {
