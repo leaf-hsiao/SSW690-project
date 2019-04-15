@@ -1,6 +1,29 @@
 const express = require('express');
 var router = express.Router();
 
+//get ip demo, but what it got is the backend location!
+/*
+const geolocation = require('google-geolocation')({
+    key: 'AIzaSyDGidP1hMaNNrRc8FYemvvJTUsotM_3b9k'
+});
+
+const params = {
+    wifiAccessPoints: [{
+        macAddress: '01:23:45:67:89:AB',
+        signalStrength: -65,
+        signalToNoiseRatio: 40
+    }]
+};
+
+geolocation(params, (err, data) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log(data);
+});
+*/
+
 /* Weather module */
 var weather = require('openweather-apis');
 
@@ -29,10 +52,11 @@ weather.getAllWeather((err, JSONObj) => {
     const temp = json.main.temp.toFixed(0);
     const des = json.weather[0].description;
     const cityName = json.name;
-    today_weather = `${cityName} ${temp}${unitSymbol} ${des}`;
+    today_weather = `${cityName} ${temp}${unitSymbol} | ${des}`;
 });
 
-// Sherry's Time function
+// (disgarded) backend Time function
+/*
 var today = new Date();
 //day
 var dd = String(today.getDate());
@@ -49,9 +73,9 @@ var wd = weekdayNamed[today.getDay()];
 
 //all together format
 const today_date = wd + ', ' + mm + ' ' + dd;
-
+*/
 router.get('/', (req, res) => res.render('index', {
-    today_date: today_date,
+    //today_date: today_date,
     today_weather: today_weather
 }));
 

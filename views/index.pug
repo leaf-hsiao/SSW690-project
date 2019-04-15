@@ -24,7 +24,8 @@ block content
   section
     #day
       #time.day-sec
-        h2= today_date
+        //h2= today_date (disgarded, this is the backend time) 
+        h2.time
       #weather.day-sec
         h2= today_weather
   // COURSES & ASSIGNMENTS
@@ -53,8 +54,6 @@ block content
             |  CPE 593 | Optional: find
             |                             optimal k for Knuth
       
-      // Real Time
-      .time
       // ICAL
       h2
         | ICAL SAMPLE

@@ -79,7 +79,8 @@ body {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.day-sec {
+.day-sec,
+.time {
     background: var(--contra);
     display: block;
 
@@ -126,5 +127,5 @@ body {
     background: var(--primary-text);
     color: white;
     text-align: center;
-    padding: 0rem;
+    padding: 0px;
 }

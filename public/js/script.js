@@ -1,6 +1,6 @@
 // Ical
-$( document ).ready(function() {
-    
+$(document).ready(function () {
+
     var today = new Date();
     //day
     var dd = String(today.getDate());
@@ -20,9 +20,9 @@ $( document ).ready(function() {
 
     $(".time").append(today_date);
 
-    $.get("/ical",function(data,status){
+    $.get("/ical", function (data, status) {
         var icaldetails = "";
-        $.each(data, function(i){
+        $.each(data, function (i) {
             icaldetails = "<tr><td>" + data[i].description + "</td><td>" + data[i].summary + "</td><td>" + data[i].end + "</td></tr>";
             $(".ical").append(icaldetails)
         })
@@ -33,4 +33,3 @@ $( document ).ready(function() {
         // }
     });
 });
-
