@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 //Bring in Models
@@ -85,10 +86,19 @@ router.post('/register', [
 
 
 /* Login Page */
+// Get Login Form
 router.get('/login', (req, res) => {
     res.render('login');
 })
 
+// Post Login Information
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/account/login',
+        failureflasj: true
+    })(req, res, next);
+});
 
 /* Settings Page */
 // Update Canvas URL - get

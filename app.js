@@ -5,10 +5,18 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 //const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 
+/*
 mongoose.connect('mongodb://localhost/DuckMommyDB', {
     useNewUrlParser: true
 });
+*/
+const config = require('./config/database');
+mongoose.connect(config.database, {
+    useNewUrlParser: true
+});
+
 let db = mongoose.connection;
 
 // Check DB connection
@@ -54,8 +62,15 @@ app.use(function (req, res, next) {
     next();
 });
 
-// validator
+// Validator
 app.use(expressValidator());
+
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Routes
 let indexRouter = require('./routes/index');
