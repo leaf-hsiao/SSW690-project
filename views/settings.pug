@@ -1,7 +1,7 @@
 extends layout
 block content
   h1 #{welcome}
-  form(method='POST', action='')
+  form(method='POST', action='settings') 
     label URL: 
-    input(name='canvasURL', type="url")
+    input(name='canvasURL', type="text")
     input(type='submit', value='Submit')

@@ -1,5 +1,5 @@
 const express = require('express');
-var router = express.Router();
+const router = express.Router();
 
 //get ip demo, but what it got is the backend location!
 
@@ -20,7 +20,7 @@ geolocation(params, (err, data) => {
         console.log(err);
         return;
     }
-    console.log(data);
+    //console.log(data);
 });
 
 
@@ -55,28 +55,30 @@ weather.getAllWeather((err, JSONObj) => {
     today_weather = `${cityName} ${temp}${unitSymbol} | ${des}`;
 });
 
-// (disgarded) backend Time function
 /*
-var today = new Date();
-//day
-var dd = String(today.getDate());
-//month
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
-var mm = monthNames[today.getMonth()];
-//year
-var yyyy = today.getFullYear();
-//weekday
-const weekdayNamed = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-var wd = weekdayNamed[today.getDay()];
-
-//all together format
-const today_date = wd + ', ' + mm + ' ' + dd;
-*/
 router.get('/', (req, res) => res.render('index', {
-    //today_date: today_date,
     today_weather: today_weather
 }));
+*/
+
+//Bring in Models
+let User = require('../models/user');
+
+//Render the index page
+router.get('/', (req, res) => {
+    User.find({
+        num: "2"
+    }, (err, user) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(user);
+            res.render('index', {
+                name: user[0].name,
+                today_weather: today_weather
+            })
+        }
+    })
+})
 
 module.exports = router;

@@ -12,18 +12,18 @@ html
                     li
                         a(href='/') Home
                     li 
-                        a(href='/Homework') Homework
+                        a(href='/settings') Settings
                     li
                         h1 DuckMommy
                     li
-                        a(href='Shuttle') Shuttle
+                        a(href='/account/register') Register
                     li
-                        a(href='account/settings') Settings
+                        a(href='/account/login') Login
+                        
         if errors
             each error, i in errors 
-                div #{error.msg}
+                h2 #{error.msg}
         != messages('message', locals)
-        //!= messages()
         block content
         footer#main-footer
             p Copyright &copy; 2019 | DuckMommy

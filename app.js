@@ -1,26 +1,75 @@
 const express = require('express');
 const path = require('path');
-var indexRouter = require('./routes/index');
-var settingsRouter = require('./routes/settings');
-var homeworkRouter = require('./routes/homework');
-var ical = require('./routes/ical');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+//const flash = require('connect-flash');
+const session = require('express-session');
 
-//Init App
+mongoose.connect('mongodb://localhost/DuckMommyDB', {
+    useNewUrlParser: true
+});
+let db = mongoose.connection;
+
+// Check DB connection
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
+
+// Check for DB errors
+db.on('error', (err) => {
+    console.log(err)
+});
+
+// Init App
 const app = express();
 
-//Load View Engine
+// Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
+// Express Session Middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+
+// validator
+app.use(expressValidator());
+
 // Routes
+let indexRouter = require('./routes/index');
+let accountRouter = require('./routes/account');
+let homeworkRouter = require('./routes/homework');
+let ical = require('./routes/ical');
+
 app.use('/', indexRouter);
-app.use('/settings', settingsRouter);
+app.use('/account', accountRouter);
 app.use('/homework', homeworkRouter);
 app.use('/ical', ical);
 
 
-//Static files
-app.use(express.static('public'));
+
 
 // Start Server
 const PORT = process.env.PORT || 3000;
