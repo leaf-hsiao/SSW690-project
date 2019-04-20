@@ -1,11 +1,30 @@
 doctype html
-html(lang="en")
-  head
-    title Weather App in NodeJS
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
-  body
-    block content
+html
+    head
+        title DuckMommy
+        link(rel='stylesheet' type='text/css' href='/stylesheets/style.css' media='screen')
+        script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
+    body
+        //HEADER
+        header
+            nav#main-nav
+                ul
+                    li
+                        a(href='/') Home
+                    li 
+                        a(href='/Homework') Homework
+                    li
+                        h1 DuckMommy
+                    li
+                        a(href='/account/settings') Settings
+                    li
+                        a(href='/account/logout') Logout
+        if errors
+            each error, i in errors 
+                div #{error.msg}
+        //!= messages('message', locals)
+        != messages()
+        block content
+        footer#main-footer
+            p Copyright &copy; 2019 | DuckMommy
+    script(src="/js/script.js")

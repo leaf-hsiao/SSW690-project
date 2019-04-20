@@ -1,8 +1,146 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+    --primary: #589BAD;
+    --light-primary: #C3E3E5;
+    --contra: #F9CE8C;
+    --light-contra: #FBE6C5;
+    --accent: #C64B2B;
+
+    --background: #F0F7F8;
+
+    --primary-text: #1A1D1E;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
-a {
-  color: #00B7FF;
+html {
+    box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
+    color: var(--primary-text);
+}
+
+body {
+    background-image: url(http://traversymedia.com/downloads/assets/beachshowcase.jpg);
+    background-size: cover;
+    margin: 30px 50px;
+    line-height: 1.4;
+    font-size: 1em;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 5px;
+}
+
+#main-nav ul {
+    display: grid;
+    grid-gap: 20px;
+    padding: 0;
+    list-style: none;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#main-nav a {
+    background: var(--primary);
+    display: block;
+    padding: 0.6em;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+}
+
+#main-nav a:hover {
+    background: var(--light-primary);
+    color: var(--primary-text);
+}
+
+#main-nav h1 {
+    background: var(--accent);
+    display: block;
+    padding: 0.4em;
+    margin: 0;
+    box-shadow: var(--shadow);
+
+    text-align: center;
+    font-size: 1.6em;
+    color: var(--contra);
+}
+
+#welcome {
+    padding: 0.5em;
+    text-align: center;
+    font-size: 2em;
+}
+
+#day {
+    margin: 0;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.day-sec,
+.time {
+    background: var(--contra);
+    display: block;
+
+    text-align: center;
+}
+
+#main-func {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#main-func h3 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#courses-list {
+    margin: 0, 30px;
+    padding: 0, 30px;
+}
+
+#main-func ul {
+    list-style: none;
+    list-style-position: inside;
+}
+
+#main-func li {
+    margin: 0;
+    padding: 0.6em 1.2em;
+    margin: 0, 20px, 0, 0, ;
+}
+
+#main-func li:nth-child(even) {
+    background: rgb(254, 245, 245);
+}
+
+#main-func li:nth-child(odd) {
+    background: var(--light-primary);
+}
+
+table {
+    display: block;
+    margin: 2px;
+    padding: 1em;
+    font-size: 1em;
+}
+
+label {
+    font: 1.5em;
+}
+
+#main-footer {
+    margin-top: 1rem;
+    background: var(--primary-text);
+    color: white;
+    text-align: center;
+    padding: 0px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
