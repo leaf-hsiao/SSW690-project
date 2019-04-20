@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+var ensureLoggedIn = require('../config/ensureLoggedIn');
 
-//get ip demo, but what it got is the backend location!
+/* get ip demo, but what it got is the backend location!
 
 const geolocation = require('google-geolocation')({
     key: 'AIzaSyDGidP1hMaNNrRc8FYemvvJTUsotM_3b9k'
@@ -22,7 +24,7 @@ geolocation(params, (err, data) => {
     }
     //console.log(data);
 });
-
+*/
 
 /* Weather module */
 var weather = require('openweather-apis');
@@ -55,24 +57,20 @@ weather.getAllWeather((err, JSONObj) => {
     today_weather = `${cityName} ${temp}${unitSymbol} | ${des}`;
 });
 
-/*
-router.get('/', (req, res) => res.render('index', {
-    today_weather: today_weather
-}));
-*/
+
 
 //Bring in Models
 let User = require('../models/user');
 
 //Render the index page
-router.get('/', (req, res) => {
+router.get('/', ensureLoggedIn, (req, res) => {
     User.findById(req.user._id, (err, user) => {
         if (err) {
             console.log(err);
             return;
         } else {
             res.render('index', {
-                name: user.firstName,
+                name: user.firstName, //firstName is from the database
                 today_weather: today_weather
             })
         }

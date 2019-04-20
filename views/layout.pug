@@ -16,9 +16,9 @@ html
                     li
                         h1 DuckMommy
                     li
-                        a(href='account/settings') Settings
+                        a(href='/account/settings') Settings
                     li
-                        a(href='account/logout') Logout
+                        a(href='/account/logout') Logout
         if errors
             each error, i in errors 
                 div #{error.msg}

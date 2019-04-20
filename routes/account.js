@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 //Bring in Models
 let User = require('../models/user');
@@ -111,7 +112,7 @@ router.get('/logout', (req, res) => {
 
 /* Settings Page */
 // Get Settings Page
-router.get('/settings', (req, res) => {
+router.get('/settings', ensureLoggedIn, (req, res) => {
     res.render('settings', {
         welcome: "Paste your Canvas URL here:"
     })
@@ -139,5 +140,6 @@ router.post('/settings', (req, res) => {
 
 
 // Update Canvas URL - update (TODO!!!)
+
 
 module.exports = router;
