@@ -66,19 +66,19 @@ let User = require('../models/user');
 
 //Render the index page
 router.get('/', (req, res) => {
-    User.find({
-        num: "2"
-    }, (err, user) => {
+    User.findById(req.user._id, (err, user) => {
         if (err) {
             console.log(err);
+            return;
         } else {
-            console.log(user);
             res.render('index', {
-                name: user[0].name,
+                name: user.firstName,
                 today_weather: today_weather
             })
         }
     })
+
+
 })
 
 module.exports = router;

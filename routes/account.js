@@ -62,7 +62,8 @@ router.post('/register', [
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            canvasURL: ''
         });
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -100,26 +101,42 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+// Logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('You are logged out');
+    res.redirect('/account/login');
+})
+
+
 /* Settings Page */
-// Update Canvas URL - get
-router.get('/settings', (req, res) => res.render('settings', {
-    welcome: "Paste your Canvas URL here:"
-}));
+// Get Settings Page
+router.get('/settings', (req, res) => {
+    res.render('settings', {
+        welcome: "Paste your Canvas URL here:"
+    })
+});
 
-// Update Canvas URL - post
-router.post('/', (req, res) => {
-    let user = new User();
-    user.canvasURL = req.body.canvasURL;
-
-    user.save((err) => {
+// Post Settings 
+router.post('/settings', (req, res) => {
+    User.findById(req.user._id, (err, user) => {
         if (err) {
             console.log(err);
             return;
         } else {
-            res.send("Success Update URL!")
+            user.canvasURL = req.body.canvasURL;
+            user.save((err) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                } else {
+                    res.send("Success Update URL!")
+                }
+            })
         }
-    });
+    })
 });
+
 
 // Update Canvas URL - update (TODO!!!)
 

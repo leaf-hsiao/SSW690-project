@@ -18,7 +18,7 @@ let userSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    canvasIcsURL: {
+    canvasURL: {
         type: String,
         required: false
     },
