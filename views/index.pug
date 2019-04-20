@@ -1,51 +1,43 @@
 extends layout
+
 block content
-  .container
-      h2 
-        p
-         | Weather App in NodeJS using Open Weather API
-      br
-      br
-      .row
-        .col-md-6
-          form.form-inline(method="post", action="weather")
-            .form-group
-              label.sr-only(for="inputEmail") City Name
-              input.form-control( name="city" type="text" placeholder="Enter City Name" required='required')
-              
-            | &nbsp;&nbsp; 
-            button.btn.btn-primary(type="submit") Fetch Weather
-          
-        hr
-      .row
-        .col-md-12
-          p
-           br
-           br
-           strong Weather Forecast #{forecast}
-          table.table
-            thead
-              tr
-                th Longitude / Latitude
-                
-                th Pressure
-                th Temprature
-                th Humidty
-                th Speed
-            tbody
-               if body
-                tr
-                  td
-                    #{body.coord.lon} / #{body.coord.lon}
-                  td 
-                    #{body.main.pressure}
-                  td
-                    #{body.main.temp}
-                  td
-                    #{body.main.humidity}
-                  td
-                    #{body.wind.speed}
-               else
-                tr
-                    td(colspan="6")
-                      | Enter city name and click Fetch Weather button
+  // WELCOME
+  section#welcome
+    div
+      h1 Hi #{name}!
+  // TIME & WEATHER
+  section
+    #day
+      #time.day-sec
+        //h2= today_date (disgarded, this is the backend time) 
+        h2.time
+      #weather.day-sec
+        h2= today_weather
+  // COURSES & ASSIGNMENTS
+  section
+    #main-func
+      // COURSES
+      #courses
+        h3 Courses Today
+        #courses-list
+          ul
+            li SSW 690 | 12:00-14:30 |A 115
+            li SSW 565 | 18:15-20:45 |BC 310
+      // ASSIGNMENTS
+      #assignments
+        h3 Upcoming Due
+        ul
+          li
+            span 18:00
+            |  SSW 565 | Weekly
+            |                             Assignment: Apache Styles - G1
+          li
+            span 23:59
+            |  SSW 567 | Quiz 04
+          li
+            span 23:59
+            |  CPE 593 | Optional: find
+            |                             optimal k for Knuth
+    
+    
+    
