@@ -130,6 +130,20 @@ table {
     font-size: 1em;
 }
 
+.ical {
+    background: rgba(104, 104, 104, 0.2);
+    color: var(--primary-text);
+
+}
+
+.ical ul {
+    list-style: none;
+}
+
+.hw-date {
+    font-size: 2em;
+}
+
 label {
     font: 1.5em;
 }
