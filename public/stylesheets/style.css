@@ -130,6 +130,11 @@ table {
     font-size: 1em;
 }
 
+.ical {
+    color: #C64B2B;
+    list-style: none;
+}
+
 label {
     font: 1.5em;
 }
