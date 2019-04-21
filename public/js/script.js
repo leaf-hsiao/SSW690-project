@@ -20,23 +20,24 @@ const monthNums = ["01", "02", "03", "04", "05", "06",
     "07", "08", "09", "10", "11", "12"
 ];
 var ical_mm = monthNums[today.getMonth()];
-var ical_date = yyyy + '-' + ical_mm + '-' + String(today.getDate() + 1);
-var ical_date_next = yyyy + '-' + ical_mm + '-' + dd+1;
+var ical_date = yyyy + '-' + ical_mm + '-' + dd;
+var ical_date_next = yyyy + '-' + ical_mm + '-' + String(today.getDate() + 1);
 
 $(".time").append(today_date);
 // Ical
 $.get("/ical", function (data, status) {
     var icaldetails = "";
+    var todolist = "";
+    var count = 3;
     $.each(data, function (i) {
         if(data[i].end.slice(0,10) == ical_date || data[i].end.slice(0,10) == ical_date_next){
+            count--;
             icaldetails = "<ul><li>" + data[i].end.slice(0,10) + "</li><li>" + data[i].summary + "</li><li>" + data[i].description + "</li></ul>";
             $(".ical").append(icaldetails)
+            if(count > 0){
+                todolist = "<ul><li>" + data[i].end.slice(0,10) + "</li><li>" + data[i].summary + "</li></ul>";
+                $(".todo_list").append(icaldetails)
+            }
         }
-        
     })
-    // for (var i = 0; i < data.length; i++) {
-    //     html = html + '<tr>';
-    //     html = html + '<td>' + data[i].description + '</td>';
-    //     html = html + '</tr>';
-    // }
 });
