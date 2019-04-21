@@ -131,15 +131,13 @@ router.post('/settings', (req, res) => {
                     console.log(err);
                     return;
                 } else {
-                    res.send("Success Update URL!")
+                    req.flash('You are now registered in DuckMommy and can log in');
+                    res.redirect('/');
                 }
             })
         }
     })
 });
-
-
-// Update Canvas URL - update (TODO!!!)
 
 
 module.exports = router;
