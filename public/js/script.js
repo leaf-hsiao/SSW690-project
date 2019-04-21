@@ -1,4 +1,4 @@
-// Time
+/* Time Module: Generate the Date of Today */
 var today = new Date();
 //day
 var dd = String(today.getDate());
@@ -21,22 +21,19 @@ const monthNums = ["01", "02", "03", "04", "05", "06",
 ];
 var ical_mm = monthNums[today.getMonth()];
 var ical_date = yyyy + '-' + ical_mm + '-' + String(today.getDate() + 1);
-var ical_date_next = yyyy + '-' + ical_mm + '-' + dd+1;
+var ical_date_next = yyyy + '-' + ical_mm + '-' + dd + 1;
 
 $(".time").append(today_date);
-// Ical
+
+
+/* Generate the Homework for Today & Tomorrow */
 $.get("/ical", function (data, status) {
     var icaldetails = "";
     $.each(data, function (i) {
-        if(data[i].end.slice(0,10) == ical_date || data[i].end.slice(0,10) == ical_date_next){
-            icaldetails = "<ul><li>" + data[i].end.slice(0,10) + "</li><li>" + data[i].summary + "</li><li>" + data[i].description + "</li></ul>";
+        if (data[i].end.slice(0, 10) == ical_date || data[i].end.slice(0, 10) == ical_date_next) {
+            icaldetails = "<ul><li>" + data[i].end.slice(0, 10) + "</li><li>" + data[i].summary + "</li><li>" + data[i].description + "</li></ul>";
             $(".ical").append(icaldetails)
         }
-        
+
     })
-    // for (var i = 0; i < data.length; i++) {
-    //     html = html + '<tr>';
-    //     html = html + '<td>' + data[i].description + '</td>';
-    //     html = html + '</tr>';
-    // }
 });
