@@ -12,6 +12,79 @@ mongoose.connect('mongodb://localhost/DuckMommyDB', {
     useNewUrlParser: true
 });
 */
+
+//Need to make changes to the node-mailer module.
+const path = require('path');
+const nodemailer = require('nodemailer');
+
+const app = express();
+
+// View engine setup
+//app.engine('handlebars', exphbs());
+//app.set('view engine', 'handlebars');
+
+// Static folder
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.render('views');
+});
+
+app.post('/send', (req, res) => {
+  const output = `
+    <p>You have a new contact request</p>
+    <h3>Contact Details</h3>
+    <ul>  
+      <li>FirstName: ${req.body.firstname}</li>
+      <li>LastName: ${req.body.lastname}</li>
+      <li>Email: ${req.body.email}</li>
+      <li>Password: ${req.body.pasword}</li>
+      <li>ConfirmPassword: ${req.body.confirmpasword}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${req.body.message}</p>
+  `;
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: 'noreplyduckmommy@gmail.com', // generated ethereal user
+        pass: 'noreplyduckmommy1234!'  // generated ethereal password
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+      from: '"Nodemailer Contact" <noreplyduckmommy@gmail.com>', // sender address
+      to: 'RECEIVEREMAILS', // list of receivers
+      subject: 'Node Contact Request', // Subject line
+      text: 'Test Mail for SSW-690', // plain text body
+      html: output // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }
+      console.log('Message sent: %s', info.messageId);   
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+      res.render('views', {msg:'Email has been sent. This is a succesful verification mail.'});
+  });
+  });
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------//
 const config = require('./config/database');
 mongoose.connect(config.database, {
     useNewUrlParser: true
