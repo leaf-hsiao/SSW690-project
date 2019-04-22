@@ -42,6 +42,7 @@ app.post('/send', (req, res) => {
       <li>FirstName: ${req.body.firstname}</li>
       <li>LastName: ${req.body.lastname}</li>
       <li>Email: ${req.body.email}</li>
+      <li>Email: ${req.body.phoneNumber}</li>
       <li>Password: ${req.body.pasword}</li>
       <li>ConfirmPassword: ${req.body.confirmpasword}</li>
     </ul>
@@ -84,7 +85,39 @@ app.post('/send', (req, res) => {
   });
   });
 
-//-------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+//Using Nexmo service to send SMS.
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: YOUR_API_KEY, //Need to input API created from Nexmo!
+  apiSecret: YOUR_API_SECRET //Input the secret_API key.
+});
+
+nexmo.message.sendSms(
+    YOUR_VIRTUAL_NUMBER, '15105551234', 'yo', //Replace the virtual number an the body of the message. 
+      (err, responseData) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.dir(responseData);
+        }
+      }
+   );
+
+
+app.post('/send', (req, res) =>; {
+// Send SMS
+nexmo.message.sendSms(
+    config.number, req.body.toNumber, req.body.message, {type: 'unicode'},
+    (err, responseData) => {if (responseData) {console.log(responseData)}}
+);
+});
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------//
+
 const config = require('./config/database');
 mongoose.connect(config.database, {
     useNewUrlParser: true
