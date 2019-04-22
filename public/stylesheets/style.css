@@ -91,7 +91,7 @@ body {
 #main-func {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
 }
 
 #main-func h3 {
@@ -123,6 +123,8 @@ body {
     background: var(--light-primary);
 }
 
+
+/* Assignment Page */
 table {
     display: block;
     margin: 2px;
@@ -144,10 +146,14 @@ table {
     font-size: 2em;
 }
 
-label {
-    font: 1.5em;
+/* Sign up & Log in */
+
+#login-form,
+#signup-form {
+    font-size: 1.3em;
 }
 
+/* Footer */
 #main-footer {
     margin-top: 1rem;
     background: var(--primary-text);
