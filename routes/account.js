@@ -63,6 +63,7 @@ router.post('/register', [
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
+            number: req.body.number,
             password: req.body.password,
             canvasURL: ''
         });
