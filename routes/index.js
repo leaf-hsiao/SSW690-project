@@ -57,8 +57,6 @@ weather.getAllWeather((err, JSONObj) => {
     today_weather = `${cityName} ${temp}${unitSymbol} | ${des}`;
 });
 
-
-
 //Bring in Models
 let User = require('../models/user');
 
