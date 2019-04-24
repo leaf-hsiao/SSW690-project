@@ -20,7 +20,10 @@ html
                         li
                             a(href='/account/settings') Settings
                         li
+                            a(href='/game.html') game
+                        li
                             a(href='/account/logout') Logout
+                        
             if errors
                 each error, i in errors 
                     div #{error.msg}
