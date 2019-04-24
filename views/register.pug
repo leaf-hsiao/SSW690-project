@@ -3,20 +3,25 @@ extends layout_min
 block content
   h1 Welcome to DuckMommy!
   h2 New user? Create an account
-  form(method='POST', action='/account/register')
+  form#signup-form(method='POST', action='/account/register')
     label First Name
+    br
     input(name='firstName', type="text")
     br
     label Last Name
+    br
     input(name='lastName', type="text")
     br
     label Email
+    br
     input(name='email', type="text")
     br
     label Password
+    br
     input(name='password', type="password")
     br
     label Confirm Password
+    br
     input(name='password2', type="password")
     br
     input(type='submit', value='Submit') 

@@ -3,11 +3,13 @@ extends layout_min
 block content
   h1 Welcome to DuckMommy!
   h2 Please sign in 
-  form(method="POST", action="/account/login")
+  form#login-form(method="POST", action="/account/login")
     label Email
+    br
     input(name='email', type="text")
     br
     label Password
+    br
     input(name='password', type="password")
     br
     input(type='submit', value='Submit') 

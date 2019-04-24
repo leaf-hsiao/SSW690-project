@@ -1,9 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-
-router.get('/', (req, res) => res.render('homework', {
-    welcome: "Homework Sample"
-}));
+router.get('/', (req, res) => res.render('homework'));
 
 module.exports = router;
