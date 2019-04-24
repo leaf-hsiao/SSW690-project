@@ -11,18 +11,27 @@
     --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
-html {
-    box-sizing: border-box;
-    font-family: "Courier New", Courier, monospace;
-    color: var(--primary-text);
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--primary-text);
+
+
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1em;
+}
+
+.showcase {
     background-image: url(http://traversymedia.com/downloads/assets/beachshowcase.jpg);
     background-size: cover;
-    margin: 30px 50px;
-    line-height: 1.4;
-    font-size: 1em;
+    background-position: center;
+    height: 100vh;
 }
 
 .wrapper {
