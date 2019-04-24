@@ -11,7 +11,7 @@ let User = require('../models/user');
 
 // Get Register Form
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('login');
 });
 
 // Post Register Information

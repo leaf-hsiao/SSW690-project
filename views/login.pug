@@ -1,16 +1,53 @@
-extends layout_min
-
-block content
-  h1 Welcome to DuckMommy!
-  h2 Please sign in 
-  form#login-form(method="POST", action="/account/login")
-    label Email
-    br
-    input(name='email', type="text")
-    br
-    label Password
-    br
-    input(name='password', type="password")
-    br
-    input(type='submit', value='Submit') 
-    // later need to upgrade the button to "Sign In"
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title DuckMommy Sign in/up form 
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet' type='text/css' href='/stylesheets/login.css' media='screen')
+  body
+    .connectPanel.row.overflow-auto.h-100.d-flex.align-items-center.justify-content-center.p-5
+      #leftPanel.d-flex.align-items-center.justify-content-center
+        .text-center
+          h1
+            | Hello, Duck!
+          h6 Welcome to DuckMommy!
+          button.btn-connect.btn-connect-navigate.signin.active(onclick='changeForm(this)') Sign in
+          button.btn-connect.btn-connect-navigate.signup(onclick='changeForm(this)') Sign up
+      #rightPanel.flip-container.d-flex.align-items-center.justify-content-center
+        .front.w-100.h-100.d-flex.align-items-center.justify-content-center
+          form#loginForm.text-center(method='POST', action='/account/login')
+            .form-group
+              label Email
+              input.form-control(name='email', type='text')
+            .form-group
+              label Password
+              input.form-control(name='password', type='password')
+            .form-group
+              button.btn-connect.btn-connect-form.m-auto(type='submit', value='Submit') 
+                | Sign In
+        .back.w-100.h-100.d-flex.align-items-center.justify-content-center
+          form#registerForm.text-center(method='POST', action='/account/register')
+            .form-group
+              label First Name
+              input.form-control(name='firstName', type='text')
+            .form-group
+              label Last Name
+              input.form-control(name='lastName', type='text')
+            .form-group
+              label Email
+              input.form-control(name='email', type='text')
+            .form-group
+              label Password
+              input.form-control(name='password', type='password')
+            .form-group
+              label Confirm password
+              input.form-control(name='password2', type='password')
+            .form-group
+              button.btn-connect.btn-connect-form.m-auto(type='submit', value='Submit') 
+                | Sign Up
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    script(src='/js/login.js')
