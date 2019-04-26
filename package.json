@@ -32,6 +32,7 @@
     "google-geolocation": "^1.0.2",
     "mongoose": "^5.5.2",
     "node-ical": "^0.9.2",
+    "nodemailer": "^6.1.1",
     "openweather-apis": "^4.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
