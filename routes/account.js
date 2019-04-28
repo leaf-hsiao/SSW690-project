@@ -38,7 +38,6 @@ router.post('/register', [
     const email = req.body.email;
     const password = req.body.password;
     const password2 = req.body.password2;
-
     req.checkBody('firstName', 'first name is required').notEmpty();
     req.checkBody('lastName', 'last name is required').notEmpty();
     req.checkBody('email', 'email is required').notEmpty();
@@ -126,55 +125,8 @@ router.post('/register', [
 
         res.render('login', {msg:'Email has been sent'});
     });
-
-    /*Email Verification*/
-    app.get('/verify',function(req,res){
-        console.log(req.protocol+":/"+req.get('host'));
-        if((req.protocol+"://"+req.get('host'))==("http://"+host))
-        {
-            console.log("Domain is matched. Information is from Authentic email.");
-            if(req.query.id==rand)
-            {
-                console.log("Email is verified.");
-                res.end("<h1>The e-mail registered has been successfully verified.");
-            }
-            else
-            {
-                console.log("Email is not verified.");
-                res.end("<h1>Bad Request</h1>");
-            }
-        }
-        else
-        {
-            res.end("<h1>Request is from an unknown source.");
-        }
-        });
         }
     });
-
-    /*Email Verification*/
-    app.get('/verify',function(req,res){
-    console.log(req.protocol+":/"+req.get('host'));
-    if((req.protocol+"://"+req.get('host'))==("http://"+host))
-    {
-        console.log("Domain is matched. Information is from Authentic email.");
-        if(req.query.id==rand)
-        {
-            console.log("Email is verified.");
-            res.end("<h1>The e-mail registered has been successfully verified.");
-        }
-        else
-        {
-            console.log("Email is not verified.");
-            res.end("<h1>Bad Request</h1>");
-        }
-    }
-    else
-    {
-        res.end("<h1>Request is from an unknown source.");
-    }
-    });
- 
 
 /* Login Page */
 // Get Login Form
