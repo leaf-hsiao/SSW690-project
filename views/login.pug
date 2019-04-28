@@ -17,7 +17,7 @@ html(lang='en')
           button.btn-connect.btn-connect-navigate.signup(onclick='changeForm(this)') Sign up
       #rightPanel.flip-container.d-flex.align-items-center.justify-content-center
         .front.w-100.h-100.d-flex.align-items-center.justify-content-center
-          form#loginForm.text-center(method='POST', action='/send')
+          form#loginForm.text-center(method='POST', action='/account/login')
             .form-group
               label Email
               input.form-control(name='email', type='text')
@@ -25,10 +25,10 @@ html(lang='en')
               label Password
               input.form-control(name='password', type='password')
             .form-group
-              button.btn-connect.btn-connect-form.m-auto(type='submit', value='Submit') 
+              button.btn-connect.btn-connect-form.m-auto#SignIn(type='submit', value='Submit') 
                 | Sign In
         .back.w-100.h-100.d-flex.align-items-center.justify-content-center
-          form#registerForm.text-center(method='POST', action='/send')
+          form#registerForm.text-center(method='POST', action='/account/register')
             .form-group
               label First Name
               input.form-control(name='firstName', type='text')
@@ -45,7 +45,7 @@ html(lang='en')
               label Confirm password
               input.form-control(name='password2', type='password')
             .form-group
-              button.btn-connect.btn-connect-form.m-auto(type='submit', onclick='myFunction()', value='Submit') 
+              button.btn-connect.btn-connect-form.m-auto#SignUp(type='submit', onclick='myFunction()', value='Submit') 
                 | Sign Up
             script.
               function myFunction() {
