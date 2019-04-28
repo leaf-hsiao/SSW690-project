@@ -88,5 +88,5 @@ app.use('/homework', homeworkRouter);
 app.use('/ical', ical);
 
 // Start Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => console.log(`Duck server started on port ${PORT}!`));
