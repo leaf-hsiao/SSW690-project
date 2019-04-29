@@ -203,3 +203,26 @@ button:focus {
     padding: 0.2rem;
     text-align: center;
 }
+
+.duck-container {
+    position: relative;
+    font-size: 40px;
+    z-index: 2;
+}
+
+sub,
+sup {
+    display: inline-block;
+    font-size: 50%;
+    animation: steps 1.5s infinite alternate;
+}
+
+@keyframes steps {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(-15deg);
+    }
+}

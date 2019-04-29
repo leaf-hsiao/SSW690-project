@@ -15,6 +15,15 @@ html(lang='en')
           h6 Welcome to DuckMommy!
           button.btn-connect.btn-connect-navigate.signin.active(onclick='changeForm(this)') Sign in
           button.btn-connect.btn-connect-navigate.signup(onclick='changeForm(this)') Sign up
+          .duck-container
+            div
+              | 🦆
+              sub 🐤
+              sup 🐤
+              sub 🐤
+              sup 🐤
+              sub 🐤
+              sup 🐤
       #rightPanel.flip-container.d-flex.align-items-center.justify-content-center
         .front.w-100.h-100.d-flex.align-items-center.justify-content-center
           form#loginForm.text-center(method='POST', action='/account/login')

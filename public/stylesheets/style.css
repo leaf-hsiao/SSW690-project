@@ -78,7 +78,7 @@ h3 {
 
 .assignment {
     display: inline-block;
-    height: 570px;
+    height: 580px;
     width: 90%;
     border-radius: 25px;
     box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, .65);
@@ -97,10 +97,9 @@ h3 {
 
 .assi-down {
     width: 100%;
-    height: 520px;
+    height: 500px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    color: white;
 }
 
 .assi-down ul {
@@ -109,15 +108,60 @@ h3 {
     color: black;
     margin: 0;
     padding: 0;
+    font-size: 16px;
 }
 
 .assi-down li {
     padding: 0.8em 1.2em;
     margin: 0, 20px, 0, 0;
+    font-size: 16px;
 }
 
 .assi-down li:nth-child(odd) {
     background: rgb(253, 249, 239);
+}
+
+.details-sec {
+    border: 0px solid #f0f0f0;
+    text-align: center;
+}
+
+.details {
+    display: inline-block;
+    height: 100%;
+    width: 95%;
+    border-radius: 25px;
+
+
+}
+
+.details-up {
+    width: 100%;
+    background-color: rgba(193, 114, 80, 0.8);
+    height: 60px;
+}
+
+
+.details-down {
+    width: 100%;
+    height: 520px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+}
+
+
+.details-down ul {
+    list-style: none;
+    list-style-position: outside;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.details-down li {
+    padding: 0.8em 1.2em;
+    margin: 0, 20px, 0, 0;
 }
 
 .hw-date {

@@ -1,14 +1,17 @@
 doctype html
-html(lang='en')
+html
   head
     title DuckMommy
     meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
     link(rel='stylesheet' type='text/css' href='/stylesheets/style.css' media='screen')
-    
+    script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
+    //script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
   body
     .container
-      nav.navbar.navbar-expand-lg.mt-4.d-flex.navbar-light.rounded-pill.border.border-dark.bg-transparent
+      nav.navbar.navbar-expand-lg.my-6.d-flex.navbar-light.rounded-pill.border.border-dark.bg-transparent
         a.navbar-brand(href='/')  DuckMommy 
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
@@ -17,9 +20,9 @@ html(lang='en')
             li.nav-item
               a.nav-link(href='/') Home 
             li.nav-item
-              a.nav-link(href='/homework') Work!
+              a.nav-link(href='/homework') Assignment
             li.nav-item
-              a.nav-link(href='/game.html') Play!
+              a.nav-link(href='/game.html') I'm bored
             li.nav-item.dropdown
               a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                 | Account
@@ -27,10 +30,7 @@ html(lang='en')
                 a.dropdown-item(href='/account/settings') Settings
                 a.dropdown-item(href='/account/logout') Logout
       block content
-      .card-footer.fixed-bottom.text-dark
+      .card-footer.text-dark
         p Copyright © 2019 | DuckMommy
-  script(src="/js/script.js")
-  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
-  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    script(src="/js/script.js")
     
