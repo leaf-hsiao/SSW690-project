@@ -1,35 +1,36 @@
 doctype html
-html
-    head
-        title DuckMommy
-        meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
-        link(rel='stylesheet' type='text/css' href='/stylesheets/style.css' media='screen')
-        script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
-    body
-        div.showcase
-            //HEADER
-            header
-                nav#main-nav
-                    ul
-                        li
-                            a(href='/') Home
-                        li 
-                            a(href='/Homework') Homework
-                        li
-                            h1 DuckMommy
-                        li
-                            a(href='/account/settings') Settings
-                        li
-                            a(href='/game.html') game
-                        li
-                            a(href='/account/logout') Logout
-                        
-            if errors
-                each error, i in errors 
-                    div #{error.msg}
-            //!= messages('message', locals)
-            != messages()
-            block content
-        footer#main-footer
-            p Copyright &copy; 2019 | DuckMommy
-    script(src="/js/script.js")
+html(lang='en')
+  head
+    title DuckMommy
+    meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/style.css' media='screen')
+    
+  body
+    .container
+      nav.navbar.navbar-expand-lg.mt-4.d-flex.navbar-light.rounded-pill.border.border-dark.bg-transparent
+        a.navbar-brand(href='/')  DuckMommy 
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.d-flex
+            li.nav-item
+              a.nav-link(href='/') Home 
+            li.nav-item
+              a.nav-link(href='/homework') Work!
+            li.nav-item
+              a.nav-link(href='/game.html') Play!
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                | Account
+              .dropdown-menu(aria-labelledby='navbarDropdown')
+                a.dropdown-item(href='/account/settings') Settings
+                a.dropdown-item(href='/account/logout') Logout
+      block content
+      .card-footer.fixed-bottom.text-dark
+        p Copyright © 2019 | DuckMommy
+  script(src="/js/script.js")
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    

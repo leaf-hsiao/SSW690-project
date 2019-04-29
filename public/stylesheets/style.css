@@ -1,177 +1,134 @@
-:root {
-    --primary: #589BAD;
-    --light-primary: #C3E3E5;
-    --contra: #F9CE8C;
-    --light-contra: #FBE6C5;
-    --accent: #C64B2B;
-
-    --background: #F0F7F8;
-
-    --primary-text: #1A1D1E;
-    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 body {
-    box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: var(--primary-text);
-
-
-    margin: 0;
-    line-height: 1.6;
-    font-size: 1em;
-}
-
-.showcase {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: black;
     background-image: url(http://traversymedia.com/downloads/assets/beachshowcase.jpg);
     background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.jumbotron span {
+    color: #c58668;
+}
+
+
+
+.date-sec,
+.weather-sec {
+    height: 300px;
+    border: 0px solid #f0f0f0;
+    text-align: center;
+}
+
+.date,
+.weather {
+    display: inline-block;
+    height: 280;
+    width: 80%;
+    border: 0px solid black;
+    border-radius: 25px;
+    box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, .85);
+
+}
+
+.date-up {
+    background-image: url("https://images.pexels.com/photos/2076494/pexels-photo-2076494.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+}
+
+.weather-up {
+    background-image: url("https://images.pexels.com/photos/45848/kumamoto-japan-aso-cloud-45848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+
+.date-up,
+.weather-up {
+    width: 100%;
+    background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 180px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 
-
-.wrapper {
-    display: grid;
-    grid-gap: 5px;
-}
-
-#main-nav ul {
-    display: grid;
-    grid-gap: 20px;
-    padding: 0;
-    list-style: none;
-    grid-template-columns: repeat(6, 1fr);
-}
-
-#main-nav a {
-    background: var(--primary);
-    display: block;
-    padding: 0.6em;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
+.date-down,
+.weather-down {
+    width: 100%;
+    background-color: #deb5a2;
+    height: 100px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     color: white;
-    font-size: 1.3em;
 }
 
-#main-nav a:hover {
-    background: var(--light-primary);
-    color: var(--primary-text);
+h2,
+h3 {
+    display: inline-block;
 }
 
-#main-nav h1 {
-    background: var(--accent);
-    display: block;
-    padding: 0.4em;
-    margin: 0;
-    box-shadow: var(--shadow);
-
-    text-align: center;
-    font-size: 1.6em;
-    color: var(--contra);
-}
-
-#welcome {
-    padding: 0.5em;
-    text-align: center;
-    font-size: 2em;
-}
-
-#day {
-    margin: 0;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.day-sec,
-.time {
-    background: var(--contra);
-    display: block;
-
+.assignment-sec {
+    height: 600px;
+    border: 0px solid #f0f0f0;
     text-align: center;
 }
 
-#main-func {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(1, 1fr);
+
+
+.assignment {
+    display: inline-block;
+    height: 570px;
+    width: 90%;
+    border-radius: 25px;
+    box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, .65);
+
 }
 
-#main-func h3 {
-    text-align: center;
-    font-size: 1.5em;
+.assi-up {
+    width: 100%;
+    background-color: #a2cede;
+    height: 80px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
 }
 
-#courses-list {
-    margin: 0, 30px;
-    padding: 0, 30px;
+
+.assi-down {
+    width: 100%;
+    height: 520px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
 }
 
-#main-func ul {
+.assi-down ul {
     list-style: none;
-    list-style-position: inside;
-}
-
-#main-func li {
+    list-style-position: outside;
+    color: black;
     margin: 0;
-    padding: 0.6em 1.2em;
-    margin: 0, 20px, 0, 0, ;
+    padding: 0;
 }
 
-#main-func li:nth-child(even) {
-    background: rgb(254, 245, 245);
+.assi-down li {
+    padding: 0.8em 1.2em;
+    margin: 0, 20px, 0, 0;
 }
 
-#main-func li:nth-child(odd) {
-    background: var(--light-primary);
-}
-
-
-/* Assignment Page */
-table {
-    display: block;
-    margin: 2px;
-    padding: 1em;
-    font-size: 1em;
-}
-
-.ical {
-    background: rgba(104, 104, 104, 0.2);
-    color: var(--primary-text);
-
-}
-
-.ical ul {
-    list-style: none;
+.assi-down li:nth-child(odd) {
+    background: rgb(253, 249, 239);
 }
 
 .hw-date {
-    font-size: 2em;
+    background: rgb(226, 190, 172);
+    font-weight: 600;
 }
 
-/* Sign up & Log in */
-
-#login-form,
-#signup-form {
-    font-size: 1.3em;
+.hw-sum {
+    background: rgb(239, 220, 206);
 }
 
-/* Footer */
-#main-footer {
-    margin-top: 1rem;
-    background: var(--primary-text);
-    color: white;
-    text-align: center;
-    padding: 0px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+.hw-des {
+    background: rgb(253, 249, 239);
 }
