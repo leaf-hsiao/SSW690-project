@@ -11,6 +11,7 @@ html
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
   body
     .container
+      != messages('message', locals)
       nav.navbar.navbar-expand-lg.my-6.d-flex.navbar-light.rounded-pill.border.border-dark.bg-transparent
         a.navbar-brand(href='/')  DuckMommy 
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
@@ -30,7 +31,8 @@ html
                 a.dropdown-item(href='/account/settings') Settings
                 a.dropdown-item(href='/account/logout') Logout
       block content
-      .card-footer.text-dark
-        p Copyright © 2019 | DuckMommy
+    footer.footer
+      .container
+        span Copyright © 2019 | DuckMommy
     script(src="/js/script.js")
     
