@@ -63,6 +63,14 @@ body {
     color: white;
 }
 
+.date-down {
+    line-height: 100px;
+}
+
+.weather-down {
+    line-height: 150px;
+}
+
 h2,
 h3 {
     display: inline-block;
@@ -175,4 +183,17 @@ h3 {
 
 .hw-des {
     background: rgb(253, 249, 239);
+}
+
+.footer {
+    position: absolute;
+    margin: 0px;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+    line-height: 30px;
+    /* Vertically center the text there */
+    background-color: black;
+    color: rgb(253, 249, 239);
 }

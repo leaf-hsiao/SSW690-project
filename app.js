@@ -3,15 +3,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-//const flash = require('connect-flash');
+const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-/*
-mongoose.connect('mongodb://localhost/DuckMommyDB', {
-    useNewUrlParser: true
-});
-*/
 const config = require('./config/database');
 mongoose.connect(config.database, {
     useNewUrlParser: true
@@ -56,11 +51,18 @@ app.use(session({
 }));
 
 // Express Messages Middleware
-app.use(require('connect-flash')());
+app.use(flash());
 app.use(function (req, res, next) {
     res.locals.messages = require('express-messages')(req, res);
     next();
 });
+
+//Express Session Middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+}))
 
 // Validator
 app.use(expressValidator());
@@ -77,27 +79,21 @@ app.get('*', (req, res, next) => {
 })
 
 /*Email Verification*/
-app.get('/verify',function(req,res){
-    console.log(req.protocol+":/"+req.get('host'));
-    if((req.protocol+"://"+req.get('host'))==("http://"+host))
-    {
+app.get('/verify', function (req, res) {
+    console.log(req.protocol + ":/" + req.get('host'));
+    if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
         console.log("Domain is matched. Information is from Authentic email.");
-        if(req.query.id==rand)
-        {
+        if (req.query.id == rand) {
             console.log("Email is verified.");
             res.end("<h1>The e-mail registered has been successfully verified.");
-        }
-        else
-        {
+        } else {
             console.log("Email is not verified.");
             res.end("<h1>Bad Request</h1>");
         }
-    }
-    else
-    {
+    } else {
         res.end("<h1>Request is from an unknown source.");
     }
-    });
+});
 
 // Routes
 let indexRouter = require('./routes/index');
