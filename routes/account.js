@@ -25,24 +25,39 @@ const {
 } = require('express-validator/check');
 
 router.post('/register', [
-    check('firstName').isLength({
-        min: 1
-    }),
-    check('email').isEmail(),
-    check('password').isLength({
-        min: 1
+    check('firstName')
+    .matches('^[A-Za-z][A-Za-z0-9-]*$')
+    .withMessage('First name can only contain letters, numbers or - , and must begin with letters'),
+
+    check('lastName')
+    .matches('^[A-Za-z][A-Za-z0-9-]*$')
+    .withMessage('Last name can only contain letters, numbers or - , and must begin with letters'),
+
+    check('email')
+    .isEmail()
+    .withMessage('Email is not valid'),
+
+    check('password')
+    .isLength({
+        min: 3
     })
+    .withMessage('password must be at least 3 characters'),
+
+    check('password2', 'Passwords do not match').custom((value, {
+        req
+    }) => (value === req.body.password))
+
 ], (req, res) => {
 
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
+
         let myerrors = errors.array();
+        console.log(myerrors);
         res.render('login', {
             myerrors: myerrors
         });
-
-
 
     } else {
         let newUser = new User({
@@ -69,47 +84,46 @@ router.post('/register', [
                 })
             })
         })
-        console.log(req.body);
+        /*
+                // create reusable transporter object using the default SMTP transport
+                let transporter = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    secure: false, // true for 465, false for other ports
+                    auth: {
+                        user: 'noreplyduckmommy@gmail.com', // generated ethereal user
+                        pass: 'noreplyduckmommy1234' // generated ethereal password
+                    },
+                    tls: {
+                        rejectUnauthorized: false
+                    },
+                });
 
-        // create reusable transporter object using the default SMTP transport
-        let transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false, // true for 465, false for other ports
-            auth: {
-                user: 'noreplyduckmommy@gmail.com', // generated ethereal user
-                pass: 'noreplyduckmommy1234' // generated ethereal password
-            },
-            tls: {
-                rejectUnauthorized: false
-            },
-        });
+                rand = Math.floor((Math.random() * 100) + 54);
+                host = req.get('host');
+                link = "http://" + req.get('host') + "/verify?id=" + rand;
 
-        rand = Math.floor((Math.random() * 100) + 54);
-        host = req.get('host');
-        link = "http://" + req.get('host') + "/verify?id=" + rand;
+                // setup email data with unicode symbols
+                mailOptions = {
+                    from: '"Duck Mommy Test" <noreplyduckmommy.com>', // sender address
+                    to: req.body.email, // list of receivers
+                    subject: 'Duck Mommy Test, Please confirm your Email account', // Subject line
+                    text: 'Welcome to DuckMommy. This is a test mail from Duck Mommy. Thank you for using our services. Have a great Day! DuckMommy Team!', // plain text body  
+                    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                };
 
-        // setup email data with unicode symbols
-        mailOptions = {
-            from: '"Duck Mommy Test" <noreplyduckmommy.com>', // sender address
-            to: req.body.email, // list of receivers
-            subject: 'Duck Mommy Test, Please confirm your Email account', // Subject line
-            text: 'Welcome to DuckMommy. This is a test mail from Duck Mommy. Thank you for using our services. Have a great Day! DuckMommy Team!', // plain text body  
-            html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
-        };
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: %s', info.messageId);
+                    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message sent: %s', info.messageId);
-            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-            res.render('login', {
-                msg: 'Email has been sent'
-            });
-        });
+                    res.render('login', {
+                        msg: 'Email has been sent'
+                    });
+                });*/
     }
 });
 

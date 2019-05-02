@@ -7,16 +7,19 @@ html(lang='en')
     meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet' type='text/css' href='/stylesheets/login.css' media='screen')
   body
+    != messages('message', locals)
     if myerrors
       ul.list-group
         each error in myerrors
           li(class="list-group-item list-group-item-danger text-center" role="alert")
-            | invalid #{error.param}
+            | #{error.msg}
     .connectPanel.row.overflow-auto.h-100.d-flex.align-items-center.justify-content-center.p-5
       #leftPanel.d-flex.align-items-center.justify-content-center
         .text-center
           h1
-            | Hello, Duck!
+            | Hello, 
+            span.text-warning Duck
+            | !
           h6 Welcome to DuckMommy!
           button.btn-connect.btn-connect-navigate.signin.active(onclick='changeForm(this)') Sign in
           button.btn-connect.btn-connect-navigate.signup(onclick='changeForm(this)') Sign up
@@ -61,10 +64,7 @@ html(lang='en')
             .form-group
               button.btn-connect.btn-connect-form.m-auto#SignUp(type='submit', onclick='myFunction()', value='Submit') 
                 | Sign Up
-            script.
-              function myFunction() {
-              alert("Email has been sent. Please check your inbox.");
-              }
+
     footer.footer
       .container
         span Copyright © 2019 | DuckMommy
