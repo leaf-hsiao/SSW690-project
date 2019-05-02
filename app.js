@@ -3,8 +3,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 
 const config = require('./config/database');
@@ -43,10 +44,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-// Express Session Middleware
+//Express Cookie & Session Middleware
+app.use(cookieParser());
+
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
 }));
 
@@ -57,12 +60,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-//Express Session Middleware
-app.use(session({
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
-}))
 
 // Validator
 app.use(expressValidator());
