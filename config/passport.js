@@ -19,7 +19,7 @@ module.exports = function (passport) {
             if (!user) {
                 return done(null, false, {
                     type: 'danger',
-                    message: 'Invalid email/password'
+                    message: 'Invalid email/password, please try again'
                 });
             };
 
@@ -33,7 +33,7 @@ module.exports = function (passport) {
                 } else {
                     return done(null, false, {
                         type: 'danger',
-                        message: 'Invalid email/password'
+                        message: 'Invalid email/password, please try again'
                     });
                 }
             });

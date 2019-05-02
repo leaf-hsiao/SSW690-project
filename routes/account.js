@@ -134,7 +134,6 @@ router.get('/login', (req, res) => {
 })
 
 // Post Login Information
-
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
