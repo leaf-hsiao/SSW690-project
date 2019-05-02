@@ -18,6 +18,7 @@ module.exports = function (passport) {
             };
             if (!user) {
                 return done(null, false, {
+                    type: 'danger',
                     message: 'Invalid email/password'
                 });
             };
@@ -31,6 +32,7 @@ module.exports = function (passport) {
                     return done(null, user);
                 } else {
                     return done(null, false, {
+                        type: 'danger',
                         message: 'Invalid email/password'
                     });
                 }

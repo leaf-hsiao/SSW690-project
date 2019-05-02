@@ -134,18 +134,19 @@ router.get('/login', (req, res) => {
 })
 
 // Post Login Information
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/account/login',
-        failureflasj: true
+        failureFlash: true
     })(req, res, next);
 });
 
 // Logout
 router.get('/logout', (req, res) => {
     req.logout();
-    //req.flash('success', 'You are logged out');
+    req.flash('success', 'You have signed out');
     res.redirect('/account/login');
 })
 
