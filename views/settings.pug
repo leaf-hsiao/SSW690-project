@@ -1,7 +1,38 @@
 extends layout
+
+block scripts
+  //script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+
 block content
-  p.my-4 Paste your Canvas URL here:
-  form(method='POST', action='settings') 
-    label.my-4 URL:  
-    input(name='canvasURL', type="text")
-    input(type='submit', value='Submit')
+  h3.my-4 Update your settings in this page:
+  .accordion#accordionExample.mx-auto(style='width: 90%;')
+    .card.text-dark.bg-transparent
+      #headingOne.card-header
+        h2.mb-0
+          button.btn.btn-link(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+            | Assignments
+      #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
+        .canvas-sec.card-body
+          h4.text-left.my-3 To show your assignments on DuckMommy:
+          p.text-left
+            | 1. Go to your 
+            a(href='https://sit.instructure.com/') Canvas
+            |  page
+          p.text-left 2. Follow the instructions below:
+          .text-center
+            img.img-fluid.rounded.mx-auto.d-block(src='/img/canvas-url-instruction.jpeg', alt='How to find your Canvas URL')
+          form.form-inline.mt-3(method='POST', action='settings')
+            label(for='canvasURL') 3. Paste the URL here: 
+            input.form-control(type='url', name='canvasURL', placeholder='https://sit.instructure.com/feeds/calendars/user_duck.ics')
+            button.btn.btn-info(type='submit') Submit
+    .card.text-dark.bg-transparent
+      #headingTwo.card-header
+        h2.mb-0
+          button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+            | Other Settings
+      #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
+        .card-body
+          | more functions pending...

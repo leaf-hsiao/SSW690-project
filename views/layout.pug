@@ -5,10 +5,11 @@ html
     meta(name="viewpoint" content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
     link(rel='stylesheet' type='text/css' href='/stylesheets/style.css' media='screen')
-    script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
-    //script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    block scripts
+      script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
+      //script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+      script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
   body
     .container
       != messages('message', locals)
@@ -29,7 +30,7 @@ html
                 | Account
               .dropdown-menu(aria-labelledby='navbarDropdown')
                 a.dropdown-item(href='/account/settings') Settings
-                a.dropdown-item(href='/account/logout') Logout
+                a.dropdown-item(href='/account/logout') Sign out
       block content
     footer.footer
       .container
