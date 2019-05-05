@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var ical = require('node-ical');
-const passport = require('passport');
 var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 //Bring in Models
@@ -15,21 +14,15 @@ router.get('/', ensureLoggedIn, (req, res) => {
       return;
     } else {
       var url = user.canvasURL;
+      var assi_num = user.assi_num;
       ical.fromURL(url, {}, function (err, data) {
         if (err) console.log(err);
-        //console.log(1);
+        data.assi_num = assi_num;
         res.json(data);
       });
     }
   })
 })
-/* GET ical info. 
-router.get('/', function (req, res) {
-  ical.fromURL('https://sit.instructure.com/feeds/calendars/user_TvB3EwF9kzFKDoNOVqAr9z8kJU8F1tIRvPFK9iqW.ics', {}, function (err, data) {
-    if (err) console.log(err);
-    res.json(data);
-  });
-});*/
 
 
 module.exports = router;

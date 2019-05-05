@@ -97,11 +97,13 @@ let indexRouter = require('./routes/index');
 let accountRouter = require('./routes/account');
 let homeworkRouter = require('./routes/homework');
 let ical = require('./routes/ical');
+let user = require('./routes/user');
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
 app.use('/homework', homeworkRouter);
 app.use('/ical', ical);
+app.use('/user', user);
 
 // Start Server
 const PORT = process.env.PORT || 3000;

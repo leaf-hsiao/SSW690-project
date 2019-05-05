@@ -15,8 +15,7 @@ block content
           button.btn.btn-link(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
             | Assignments
       #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
-        .canvas-sec.card-body
-          h4.text-left.my-3 To show your assignments on DuckMommy:
+        .card-body
           p.text-left
             | 1. Go to your 
             a(href='https://sit.instructure.com/') Canvas
@@ -24,10 +23,20 @@ block content
           p.text-left 2. Follow the instructions below:
           .text-center
             img.img-fluid.rounded.mx-auto.d-block(src='/img/canvas-url-instruction.jpeg', alt='How to find your Canvas URL')
-          form.form-inline.mt-3(method='POST', action='settings')
-            label(for='canvasURL') 3. Paste the URL here: 
-            input.form-control(type='url', name='canvasURL', placeholder='https://sit.instructure.com/feeds/calendars/user_duck.ics')
-            button.btn.btn-info(type='submit') Submit
+          p.text-left.my-4
+            | 3. Paste the URL here. Enter how many assignments you want to see: 
+          form(method='POST', action='settings')
+            .form-group.row.text-left
+              label.col-sm-3(for="canvasURL") Canvas URL
+              .col-sm-9
+                input.form-control(name='canvasURL', type='url', placeholder='https://sit.instructure.com/feeds/calendars/user_duck.ics')
+            .form-group.row.text-left
+              label.col-sm-3(for="assi_num") Assignment Number
+              .col-sm-9
+                input.form-control(name='assi_num', type='number', placeholder='3')
+            .form-group.row
+              .col-sm-3.text-left
+                button.btn.btn-info(type='submit') Submit
     .card.text-dark.bg-transparent
       #headingTwo.card-header
         h2.mb-0
@@ -35,4 +44,4 @@ block content
             | Other Settings
       #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
         .card-body
-          | more functions pending...
+          p more functions pending...

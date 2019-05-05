@@ -23,7 +23,7 @@ $(".time").append(today_date);
 $.get("/ical", function (data, status) {
     var icaldetails = "";
     var todolist = "";
-    var count = 3;
+    var count = data.assi_num;
     $.each(data, function (i) {
         var date_src = data[i].end.slice(0, 10).replace(/-/g, "/");
         var date_obj = new Date(date_src);
