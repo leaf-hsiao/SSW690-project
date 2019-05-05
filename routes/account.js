@@ -66,7 +66,7 @@ router.post('/register', [
             email: req.body.email,
             password: req.body.password,
             canvasURL: '',
-            assi_num: 3
+            assi_num: '3'
         });
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
