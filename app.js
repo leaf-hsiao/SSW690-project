@@ -83,6 +83,8 @@ app.get('/verify', function (req, res) {
         if (req.query.id == rand) {
             console.log("Email is verified.");
             res.end("<h1>The e-mail registered has been successfully verified.");
+            //req.flash('success', 'Your email address has been successfully verified. Please sign in');
+            //res.redirect('/account/login');
         } else {
             console.log("Email is not verified.");
             res.end("<h1>Bad Request</h1>");
