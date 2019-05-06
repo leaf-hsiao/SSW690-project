@@ -65,8 +65,8 @@ router.post('/register', [
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
-            canvasURL: '',
-            assi_num: '3'
+            canvasURL: 'https://sit.instructure.com/feeds/calendars/user_rIcyCuby9OeOajvSmw8aDHlcuTL50alSN4OXPmBR.ics',
+            assi_num: 3
         });
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -79,52 +79,52 @@ router.post('/register', [
                         console.log(err);
                         return;
                     } else {
-                        req.flash('success', 'You are now registered in DuckMommy! Please log in');
+                        req.flash('warning', 'A confirmation email has been sent. Please check your email');
                         res.redirect('/account/login');
                     }
                 })
             })
         })
-        /*
-                // create reusable transporter object using the default SMTP transport
-                let transporter = nodemailer.createTransport({
-                    host: 'smtp.gmail.com',
-                    port: 587,
-                    secure: false, // true for 465, false for other ports
-                    auth: {
-                        user: 'noreplyduckmommy@gmail.com', // generated ethereal user
-                        pass: 'noreplyduckmommy1234' // generated ethereal password
-                    },
-                    tls: {
-                        rejectUnauthorized: false
-                    },
-                });
+        ////////////Mail
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: 'noreplyduckmommy@gmail.com', // generated ethereal user
+                pass: 'noreplyduckmommy1234' // generated ethereal password
+            },
+            tls: {
+                rejectUnauthorized: false
+            },
+        });
 
-                rand = Math.floor((Math.random() * 100) + 54);
-                host = req.get('host');
-                link = "http://" + req.get('host') + "/verify?id=" + rand;
+        rand = Math.floor((Math.random() * 100) + 54);
+        host = req.get('host');
+        link = "http://" + req.get('host') + "/verify?id=" + rand;
 
-                // setup email data with unicode symbols
-                mailOptions = {
-                    from: '"Duck Mommy Test" <noreplyduckmommy.com>', // sender address
-                    to: req.body.email, // list of receivers
-                    subject: 'Duck Mommy Test, Please confirm your Email account', // Subject line
-                    text: 'Welcome to DuckMommy. This is a test mail from Duck Mommy. Thank you for using our services. Have a great Day! DuckMommy Team!', // plain text body  
-                    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
-                };
+        // setup email data with unicode symbols
+        mailOptions = {
+            from: '"Duck Mommy Test" <noreplyduckmommy.com>', // sender address
+            to: req.body.email, // list of receivers
+            subject: 'Duck Mommy Test, Please confirm your Email account', // Subject line
+            text: 'Welcome to DuckMommy. This is a test mail from Duck Mommy. Thank you for using our services. Have a great Day! DuckMommy Team!', // plain text body  
+            html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+        };
 
-                // send mail with defined transport object
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        return console.log(error);
-                    }
-                    console.log('Message sent: %s', info.messageId);
-                    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-                    res.render('login', {
-                        msg: 'Email has been sent'
-                    });
-                });*/
+            res.render('login', {
+                msg: 'Email has been sent'
+            });
+        });
     }
 });
 
@@ -137,7 +137,7 @@ router.get('/login', (req, res) => {
 // Post Login Information
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/account/settings',
         failureRedirect: '/account/login',
         failureFlash: true
     })(req, res, next);
