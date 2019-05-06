@@ -1,146 +1,199 @@
-:root {
-    --primary: #589BAD;
-    --light-primary: #C3E3E5;
-    --contra: #F9CE8C;
-    --light-contra: #FBE6C5;
-    --accent: #C64B2B;
-
-    --background: #F0F7F8;
-
-    --primary-text: #1A1D1E;
-    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
-}
-
-html {
-    box-sizing: border-box;
-    font-family: "Courier New", Courier, monospace;
-    color: var(--primary-text);
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: black;
     background-image: url(http://traversymedia.com/downloads/assets/beachshowcase.jpg);
     background-size: cover;
-    margin: 30px 50px;
-    line-height: 1.4;
-    font-size: 1em;
+    background-attachment: fixed;
 }
 
-.wrapper {
-    display: grid;
-    grid-gap: 5px;
+
+.jumbotron span {
+    color: #c58668;
 }
 
-#main-nav ul {
-    display: grid;
-    grid-gap: 20px;
-    padding: 0;
-    list-style: none;
-    grid-template-columns: repeat(5, 1fr);
-}
 
-#main-nav a {
-    background: var(--primary);
-    display: block;
-    padding: 0.6em;
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    color: white;
-    font-size: 1.3em;
-}
 
-#main-nav a:hover {
-    background: var(--light-primary);
-    color: var(--primary-text);
-}
-
-#main-nav h1 {
-    background: var(--accent);
-    display: block;
-    padding: 0.4em;
-    margin: 0;
-    box-shadow: var(--shadow);
-
-    text-align: center;
-    font-size: 1.6em;
-    color: var(--contra);
-}
-
-#welcome {
-    padding: 0.5em;
-    text-align: center;
-    font-size: 2em;
-}
-
-#day {
-    margin: 0;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.day-sec,
-.time {
-    background: var(--contra);
-    display: block;
-
+.date-sec,
+.weather-sec {
+    height: 300px;
+    border: 0px solid #f0f0f0;
     text-align: center;
 }
 
-#main-func {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+.date,
+.weather {
+    display: inline-block;
+    height: 280;
+    width: 80%;
+    border: 0px solid black;
+    border-radius: 25px;
+    box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, .85);
+
 }
 
-#main-func h3 {
-    text-align: center;
-    font-size: 1.5em;
+.date-up {
+    background-image: url("https://images.pexels.com/photos/2076494/pexels-photo-2076494.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
 }
 
-#courses-list {
-    margin: 0, 30px;
-    padding: 0, 30px;
+.weather-up {
+    background-image: url("https://images.pexels.com/photos/45848/kumamoto-japan-aso-cloud-45848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 }
 
-#main-func ul {
-    list-style: none;
-    list-style-position: inside;
-}
-
-#main-func li {
-    margin: 0;
-    padding: 0.6em 1.2em;
-    margin: 0, 20px, 0, 0, ;
-}
-
-#main-func li:nth-child(even) {
-    background: rgb(254, 245, 245);
-}
-
-#main-func li:nth-child(odd) {
-    background: var(--light-primary);
-}
-
-table {
-    display: block;
-    margin: 2px;
-    padding: 1em;
-    font-size: 1em;
-}
-
-label {
-    font: 1.5em;
-}
-
-#main-footer {
-    margin-top: 1rem;
-    background: var(--primary-text);
-    color: white;
-    text-align: center;
-    padding: 0px;
-    position: fixed;
+.date-up,
+.weather-up {
     width: 100%;
+    background-size: cover;
+    background-position: center;
+    height: 180px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+.date-down,
+.weather-down {
+    width: 100%;
+    background-color: #deb5a2;
+    height: 100px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+}
+
+.date-down {
+    line-height: 100px;
+}
+
+.weather-down {
+    line-height: 150px;
+}
+
+h2,
+h3 {
+    display: inline-block;
+}
+
+.assignment-sec {
+    height: 600px;
+    border: 0px solid #f0f0f0;
+    text-align: center;
+}
+
+
+
+.assignment {
+    display: inline-block;
+    height: 580px;
+    width: 90%;
+    border-radius: 25px;
+    box-shadow: 0px 4px 20px -4px rgba(0, 0, 0, .65);
+
+}
+
+.assi-up {
+    width: 100%;
+    background-color: #a2cede;
+    height: 80px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+
+.assi-down {
+    width: 100%;
+    height: 500px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.assi-down ul {
+    list-style: none;
+    list-style-position: outside;
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.assi-down li {
+    padding: 0.8em 1.2em;
+    margin: 0, 20px, 0, 0;
+    font-size: 16px;
+}
+
+.assi-down li:nth-child(odd) {
+    background: rgb(253, 249, 239);
+}
+
+.details-sec {
+    border: 0px solid #f0f0f0;
+    text-align: center;
+}
+
+.details {
+    display: inline-block;
+    height: 100%;
+    width: 95%;
+    border-radius: 25px;
+
+
+}
+
+.details-up {
+    width: 100%;
+    background-color: rgba(193, 114, 80, 0.8);
+    height: 60px;
+}
+
+
+.details-down {
+    width: 100%;
+    height: 520px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+}
+
+
+.details-down ul {
+    list-style: none;
+    list-style-position: outside;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.details-down li {
+    padding: 0.8em 1.2em;
+    margin: 0, 20px, 0, 0;
+}
+
+.hw-date {
+    background: rgb(226, 190, 172);
+    font-weight: 600;
+}
+
+.hw-sum {
+    background: rgb(239, 220, 206);
+}
+
+.hw-des {
+    background: rgb(253, 249, 239);
+}
+
+.footer {
+    position: absolute;
+    margin: 0px;
     bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+    line-height: 30px;
+    /* Vertically center the text there */
+    background-color: black;
+    color: rgb(253, 249, 239);
 }

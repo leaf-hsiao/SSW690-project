@@ -1,22 +1,29 @@
 extends layout
 
 block content
-  // WELCOME
-  section#welcome
+  .jumbotron.bg-transparent.my-6
     div
-      h1 Hi #{name}!
-  // TIME & WEATHER
-  section
-    #day
-      #time.day-sec
-        //h2= today_date (disgarded, this is the backend time) 
-        h2.time
-      #weather.day-sec
-        h2= today_weather
-  // COURSES & ASSIGNMENTS
-  section
-    #main-func
-      // ASSIGNMENTS
-      #assignments
-        h3 Upcoming Due
-        div.todo_list
+      h1.display-4 
+        |  Hi 
+        span #{name} 
+        | !
+  .row.main-sec.align-middle
+    .col-sm-6.left-sec
+      .date-sec
+        .date
+          .date-up
+          .date-down
+            h2.time
+      .weather-sec
+        .weather
+          .weather-up
+          .weather-down
+            h2 #{today_weather}
+    .col-sm-6.right-sec
+      .assignment-sec
+        .assignment
+          .assi-up
+            h3.my-4 
+              | Assignments
+          .assi-down.text-left
+            .todo_list

@@ -22,6 +22,10 @@ let userSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    assi_num: {
+        type: Number,
+        required: false
+    },
 })
 
 let User = module.exports = mongoose.model('User', userSchema);

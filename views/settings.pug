@@ -1,7 +1,47 @@
 extends layout
+
+block scripts
+  //script(src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js")
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+
 block content
-  h1 #{welcome}
-  form(method='POST', action='settings') 
-    label URL: 
-    input(name='canvasURL', type="text")
-    input(type='submit', value='Submit')
+  h3.my-4 Update your settings in this page:
+  .accordion#accordionExample.mx-auto(style='width: 90%;')
+    .card.text-dark.bg-transparent
+      #headingOne.card-header
+        h2.mb-0
+          button.btn.btn-link(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+            | Assignments
+      #collapseOne.collapse.show(aria-labelledby='headingOne', data-parent='#accordionExample')
+        .card-body
+          p.text-left
+            | 1. Go to your 
+            a(href='https://sit.instructure.com/') Canvas
+            |  page
+          p.text-left 2. Follow the instructions below:
+          .text-center
+            img.img-fluid.rounded.mx-auto.d-block(src='/img/canvas-url-instruction.jpeg', alt='How to find your Canvas URL')
+          p.text-left.my-4
+            | 3. Paste the URL here. Enter how many assignments you want to see: 
+          form(method='POST', action='settings')
+            .form-group.row.text-left
+              label.col-sm-3(for="canvasURL") Canvas URL
+              .col-sm-9
+                input.form-control(name='canvasURL', type='url', placeholder='https://sit.instructure.com/feeds/calendars/user_duck.ics')
+            .form-group.row.text-left
+              label.col-sm-3(for="assi_num") Assignment Number
+              .col-sm-9
+                input.form-control(name='assi_num', type='number', placeholder='3')
+            .form-group.row
+              .col-sm-3.text-left
+                button.btn.btn-info(type='submit') Submit
+    .card.text-dark.bg-transparent
+      #headingTwo.card-header
+        h2.mb-0
+          button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+            | Other Settings
+      #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
+        .card-body
+          p more functions pending...
